@@ -12,11 +12,6 @@
 </template>
 
 <script setup lang="ts">
-// interface Props {
-//   title: string;
-//   subtitle: string;
-//   thumnail: string;
-// }
 defineProps({ title: String, subtitle: String, thumbnail: String });
 defineEmits(['click']);
 </script>

@@ -1,6 +1,11 @@
-import courses from './courseDats';
+import courses from './courseData';
+import type { Course } from '~/types/course';
 
-export const useCourses = () => {
+interface CoursesReturn {
+  courses: Course[];
+}
+
+export const useCourses = (): CoursesReturn => {
   return {
     courses,
   };

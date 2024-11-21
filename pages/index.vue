@@ -24,5 +24,7 @@
 </template>
 
 <script setup lang="ts">
+console.log('woors) Page.Index...');
+
 const { courses } = useCourses();
 </script>
