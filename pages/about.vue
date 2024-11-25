@@ -9,4 +9,6 @@
   </q-page>
 </template>
 
-<script setup lang="ts"></script>
+<script setup lang="ts">
+console.log('woors) Page.About...');
+</script>
