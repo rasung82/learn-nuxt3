@@ -75,7 +75,11 @@
 const route = useRoute();
 const courseSlug = route.params.courseSlug as string;
 const { course, prevCourse, nextCourse } = useCourse(courseSlug);
-console.log('woors) Page.courseSlug...');
+console.log('woors) Page.courseSlug...', route.meta.title);
+definePageMeta({
+  key: (route) => route.fullPath,
+  title: 'Course Detail Page',
+});
 </script>
 
 <style scoped></style>
