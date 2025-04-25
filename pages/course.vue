@@ -3,7 +3,9 @@
     <div class="row q-col-gutter-md">
       <div class="col-3">
         <q-card>
-          <q-item-label header>강의 로드맵</q-item-label>
+          <q-item-label header
+            >강의 로드맵 {{ $hello("Rasung, woo") }}</q-item-label
+          >
           <q-list bordered separator>
             <q-item
               v-for="(course, index) in courses"
@@ -37,4 +39,8 @@
 
 <script setup lang="ts">
 const { courses } = useCourses();
+
+console.log("woors) Pages.course...", useNuxtApp()?.$hello("Rasung. woo"));
+
+// 중첩 라우팅 : NuxtPage 컴포넌트를 사용하여 중첩된 경로를 표시할 수 있다.
 </script>

@@ -13,6 +13,7 @@
 </template>
 
 <script setup lang="ts">
+// 타입기반 선언 시 기본값 설정은 아래와 같이 한다.
 interface Props {
   src?: string;
 }

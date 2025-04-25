@@ -15,11 +15,23 @@
     </q-card-actions>
   </q-card>
 </template>
+
 <script setup lang="ts">
-interface Props {
-  title?: string;
-}
-defineProps<Props>();
+// 런타임 선언
+// defineProps({
+//   title: { type: String, required: true, default: '' },
+// });
+
+// 타입기반 선언, 보통은 제네릭 타입 인수를 사용하여 순수 타입으로 Props를 정의하는 것이 더 직곽적이다.
+defineProps<{
+  title?: { type: string };
+}>();
+
+// 타입기반 선언 (기본값을 설정할 수 없다.)
+// interface Props {
+//   title?: string;
+// }
+// defineProps<Props>();
 </script>
 
 <style scoped>

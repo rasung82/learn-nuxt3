@@ -12,3 +12,11 @@ export interface Course {
   inflearnUrl: string;
   gymcodingUrl: string;
 }
+
+type NewType = Omit<Course, 'rating' | 'reviewsCount' | 'studentCount'>;
+export interface CourseWithPath extends NewType {
+  rating: string;
+  reviewsCount: string;
+  studentCount: string;
+  path: string;
+}

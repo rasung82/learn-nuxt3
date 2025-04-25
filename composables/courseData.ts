@@ -4,8 +4,7 @@ const courses: Course[] = [
   {
     courseSlug: 'html-css',
     title: '입문자를 위한, HTML&CSS 웹 개발 입문',
-    subtitle:
-      '코딩을 처음 접할 때 두려움이 없도록 정말 알기 쉽게 설명한 강의입니다.',
+    subtitle: '코딩을 처음 접할 때 두려움이 없도록 정말 알기 쉽게 설명한 강의입니다.',
     thumbnail: 'https://i.imgur.com/oBODKcW.jpg',
     video: 'https://www.youtube.com/embed/N_nVDZSAjq4',
     rating: 5.0,
@@ -27,8 +26,7 @@ const courses: Course[] = [
   {
     courseSlug: 'javascript',
     title: '입문자를 위한, ES6+ 최신 자바스크립트 입문',
-    subtitle:
-      '이번 강의는 코딩에 입문하시는 왕초보 분들을 위해 쉽고! 알찬! 내용을 준비했습니다.',
+    subtitle: '이번 강의는 코딩에 입문하시는 왕초보 분들을 위해 쉽고! 알찬! 내용을 준비했습니다.',
     thumbnail: 'https://i.imgur.com/0fGbOU2.png',
     video: 'https://www.youtube.com/embed/z_o638sr5s0',
     rating: 4.9,
@@ -115,8 +113,7 @@ const courses: Course[] = [
   },
   {
     courseSlug: 'vue3-firebase',
-    title:
-      'Vue 3 & Firebase 10 커뮤니티 만들기 풀스택 (with Pinia, Quasar, Tiptap, VueUse)',
+    title: 'Vue 3 & Firebase 10 커뮤니티 만들기 풀스택 (with Pinia, Quasar, Tiptap, VueUse)',
     subtitle:
       'Vue3 & Firebase(v10)를 활용하여 커뮤니티를 만드는 강의로 Vue3 실전 활용법, Firebase 기초부터 실전, 최신 웹 기술 활용법, 지식공유자 경험 공유 등 다양한 방면으로 개발자로써 한 단계 성장할 수 있도록 돕습니다!',
     thumbnail: 'https://i.imgur.com/J50dCJp.png',
