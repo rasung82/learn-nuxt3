@@ -12,7 +12,9 @@
           <span>&middot;</span>
           <span>{{ course?.studentCount }}명의 수강생</span>
           <q-space />
-          <a class="text-bold" :href="course?.reviewsUrl" target="_blank"> 수강평 보기 </a>
+          <a class="text-bold" :href="course?.reviewsUrl" target="_blank">
+            수강평 보기
+          </a>
         </div>
       </template>
       <div class="q-mb-md">
@@ -96,21 +98,60 @@
 const route = useRoute();
 const courseSlug = route.params.courseSlug as string;
 const { course, prevCourse, nextCourse } = useCourse(courseSlug);
-console.log('woors) Page.courseSlug...%s, %s', route.meta.title, course?.title);
+console.log("woors) Page.courseSlug...%s, %s", route.meta.title, course?.title);
 
 // definePageMeta는 페이지 컴포넌트에 대한 메타데이터를 설정하는데 사용
 // 컴퍼일러 매크로 함수이며 컴포넌트 내에서 참조할 수 없도록 컴파일된다.
 // 하여, 페이지 메타 객체는 컴포넌트를 참조할 수 없다.
+// keepalive : 컴포넌트의 상태를 유지, 캐싱한다.
 definePageMeta({
   key: (route) => route.fullPath,
-  title: 'Course Detail Page',
+  title: "Course Detail Page",
   keepalive: true,
-  layout: 'custom',
+  layout: "custom",
+  // Route Validation !
+  // validate: (route) => {
+  //   const courseSlug = route.params.courseSlug as string;
+  //   const { course } = useCourse(courseSlug);
+  //   if (!course) {
+  //     throw createError({
+  //       statusCode: 404,
+  //       statusMessage: "Page not found",
+  //       fatal: false,
+  //     });
+  //   }
+  //   return true;
+  // },
+  middleware: (route) => {
+    const courseSlug = route.params.courseSlug as string;
+    const { course } = useCourse(courseSlug);
+    if (!course) {
+      return abortNavigation(
+        createError({
+          statusCode: 404,
+          statusMessage: "Page not found",
+          fatal: false,
+        })
+      );
+      // return navigateTo('/')
+    }
+  },
 });
-// keepalive : 컴포넌트의 상태를 유지, 캐싱한다.
 
-const memo = ref('');
+const memo = ref("");
 const completed = ref(false);
+
+/**
+ * 서버 측에서는 전체 화면 오류 페이지를 트리거, ClearError를 사용하여 오류 페이지를 정정할 수 있다.
+ * 클라 측에서는 처리할 수 있는 비치명적인 오류를 발생
+ */
+// if (!course) {
+//   throw createError({
+//     statusCode: 404,
+//     statusMessage: "Page not found",
+//     fatal: false,
+//   });
+// }
 </script>
 
 <style scoped></style>

@@ -27,6 +27,9 @@
             <NuxtLink v-slot="{ navigate }" custom to="/course/prefetching-3">
               <q-item clickable @click="navigate()">Prefetching Test 3</q-item>
             </NuxtLink>
+            <NuxtLink v-slot="{ navigate }" custom to="/course/empty">
+              <q-item clickable @click="navigate()">Example createError</q-item>
+            </NuxtLink>
           </q-list>
         </q-card>
       </div>

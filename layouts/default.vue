@@ -29,6 +29,22 @@
             {{ $t("admin") }}
           </button>
         </NuxtLink>
+        <NuxtLink v-slot="{ navigate }" custom to="/login">
+          <button
+            class="nav-button"
+            @click="(event) => handleClick(event, navigate)"
+          >
+            {{ $t("login") }}
+          </button>
+        </NuxtLink>
+        <NuxtLink v-slot="{ navigate }" custom to="/logout">
+          <button
+            class="nav-button"
+            @click="(event) => handleClick(event, navigate)"
+          >
+            {{ $t("logout") }}
+          </button>
+        </NuxtLink>
       </nav>
     </header>
     <div class="container mx-auto p-1">
