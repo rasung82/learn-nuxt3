@@ -56,7 +56,8 @@
 <script setup lang="ts">
 console.log("woors) Layout.default...");
 
-const { authUser, isAuthenticated } = useAuthUser();
+const authUser = useAuthUser();
+const isAuthenticated = useAuthenticated();
 const { signOut } = useAuth();
 
 const handleClick = (_: Event, navigate: () => void) => {

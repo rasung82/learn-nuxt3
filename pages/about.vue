@@ -11,6 +11,19 @@
         <br />
         <NuxtLink to="/">Home(NuxtLink)</NuxtLink>
         <NuxtLink to="https://youtube.com">Youtube(NuxtLink)</NuxtLink>
+        <div class="q-gutter-y-sm q-mt-md">
+          <div class="text-subtitle1 text-weight-bold">useState('counter')</div>
+          <div>
+            counter: {{ counter }}
+            <q-btn
+              label="counter"
+              color="primary"
+              dense
+              no-caps
+              @click="counter++"
+            />
+          </div>
+        </div>
       </div>
     </div>
   </main>
@@ -22,4 +35,6 @@ console.log("woors) Page.About...");
 // RouterLink 내부로 이동하는 링크이다.
 // NuxtLink 컴포넌트 : RouterLink + <a> 태그를 즉시 대체
 // 링크가 외부인지 내부인지 결정하고, 그에 따라 사용 가능한 최적화를 사용하여 렌더링한다.
+
+const counter = useState<number>("counter", () => 1);
 </script>

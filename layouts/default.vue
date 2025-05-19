@@ -2,7 +2,7 @@
   <div class="min-h-lvh">
     <header class="header">
       <div>
-        <h3 class="text-[21px]">Vue & Nuxt Master Class</h3>
+        <h3 class="text-[21px]">Vue & Nuxt Master Class {{ counter }}</h3>
       </div>
       <nav class="flex justify-between gap-x-1 h-full">
         <NuxtLink v-slot="{ navigate }" custom to="/">
@@ -85,6 +85,8 @@ const { locale } = useI18n();
 const selectedLanguageName = computed(
   () => languages.value.find((item) => item.code === locale.value)?.name
 );
+
+const counter = useState("counter");
 </script>
 
 <style scoped>
