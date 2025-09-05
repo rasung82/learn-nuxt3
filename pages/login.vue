@@ -13,9 +13,10 @@ definePageMeta({
   middleware: "guest-only",
 });
 
+const isAdmin = useAdmin();
+
 const handleLoginSucess = async () => {
   console.log("woors) handleLoginSucess...");
-  const { isAdmin } = useAuthUser();
   const redirect = isAdmin.value ? "/admin" : "/";
   await navigateTo(redirect);
 };

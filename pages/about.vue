@@ -23,6 +23,19 @@
               @click="counter++"
             />
           </div>
+          <div>
+            counter: {{ copyCounter }}
+            <q-btn
+              label="counter"
+              color="primary"
+              dense
+              no-caps
+              @click="copyCounter++"
+            />
+          </div>
+          <div>
+            <q-btn label="clear" @click="clearNuxtState('counter')" />
+          </div>
         </div>
       </div>
     </div>
@@ -37,4 +50,5 @@ console.log("woors) Page.About...");
 // 링크가 외부인지 내부인지 결정하고, 그에 따라 사용 가능한 최적화를 사용하여 렌더링한다.
 
 const counter = useState<number>("counter", () => 1);
+const copyCounter = useState<number>("counter");
 </script>

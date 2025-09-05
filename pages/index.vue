@@ -29,9 +29,5 @@ console.log("woors) Prefetching > Page.Index...");
 
 <script setup lang="ts">
 console.log("woors) Page.Index...");
-definePageMeta({
-  layout: "custom",
-});
-
 const { courses } = useCourses();
 </script>

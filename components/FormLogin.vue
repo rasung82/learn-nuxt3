@@ -19,7 +19,9 @@
           class="w-96 h-14 p-4 bg-gray-50 border-b-2 outline-none text-gray-500 rounded-b-lg focus:border-blue-300 hover:bg-gray-100 transition-colors duration-500"
         />
       </div>
+
       <div v-if="error" class="text-red text-center">{{ error.message }}</div>
+
       <div>
         <button
           type="submit"
@@ -53,7 +55,6 @@ const handleLoginSubmit = () => {
     loading.value = true;
 
     signIn(form.value.email, form.value.passwowrd);
-
     emit("success");
   } catch (err: unknown) {
     if (err instanceof Error) {

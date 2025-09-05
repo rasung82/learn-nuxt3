@@ -1,4 +1,3 @@
-import type { UserWithoutPassword } from "~/types/user";
 import { useAuthUser } from "./useAuthUser";
 
 export const useAdmin = () => {

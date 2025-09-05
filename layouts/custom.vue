@@ -2,7 +2,7 @@
   <q-layout view="hHh lpR fFf" class="bg-grey-2">
     <header class="header">
       <div>
-        <h3 class="text-[21px]">Vue & Nuxt Master Class</h3>
+        <h3 class="text-[21px]">Vue & Nuxt Master Class {{ counter }}</h3>
       </div>
       <nav class="flex justify-between gap-x-1 h-full">
         <NuxtLink v-slot="{ navigate }" custom to="/">
@@ -48,6 +48,9 @@
       </nav>
     </header>
     <q-page-container :style="pageContainerStyle">
+      <q-banner v-if="isAuthenticated" class="bg-primary text-white">
+        {{ authUser }}
+      </q-banner>
       <slot></slot>
     </q-page-container>
   </q-layout>
@@ -55,6 +58,8 @@
 
 <script setup lang="ts">
 console.log("woors) Layout.default...");
+
+const counter = useState<number>("counter");
 
 const authUser = useAuthUser();
 const isAuthenticated = useAuthenticated();

@@ -1,56 +1,89 @@
 <template>
-  <div class="min-h-lvh">
-    <header class="header">
-      <div>
-        <h3 class="text-[21px]">Vue & Nuxt Master Class {{ counter }}</h3>
-      </div>
-      <nav class="flex justify-between gap-x-1 h-full">
+  <q-layout view="hHh lpR fFf" class="bg-grey-2">
+    <q-header elevated class="bg-dark text-white">
+      <q-toolbar>
+        <q-toolbar-title>Vue Master Course</q-toolbar-title>
+        <q-separator dark vertical />
         <NuxtLink v-slot="{ navigate }" custom to="/">
-          <button
-            class="nav-button"
-            @click="(event) => handleClick(event, navigate)"
-          >
-            {{ $t("home") }}
-          </button>
+          <q-btn stretch flat :label="$t('home')" no-caps @click="navigate()" />
         </NuxtLink>
+        <q-separator dark vertical />
         <NuxtLink v-slot="{ navigate }" custom to="/about">
-          <button
-            class="nav-button"
-            @click="(event) => handleClick(event, navigate)"
-          >
-            {{ $t("about") }}
-          </button>
+          <q-btn
+            stretch
+            flat
+            :label="$t('about')"
+            no-caps
+            @click="navigate()"
+          />
         </NuxtLink>
+        <q-separator dark vertical />
+        <q-btn
+          stretch
+          flat
+          :label="$t('youtube')"
+          no-caps
+          @click="moveYoutube"
+        />
+        <q-separator dark vertical />
         <NuxtLink v-slot="{ navigate }" custom to="/admin">
-          <button
-            class="nav-button"
-            @click="(event) => handleClick(event, navigate)"
-          >
-            {{ $t("admin") }}
-          </button>
+          <q-btn
+            stretch
+            flat
+            :label="$t('admin')"
+            no-caps
+            @click="navigate()"
+          />
         </NuxtLink>
-        <NuxtLink v-slot="{ navigate }" custom to="/login">
-          <button
-            class="nav-button"
-            @click="(event) => handleClick(event, navigate)"
-          >
-            {{ $t("login") }}
-          </button>
+        <q-separator dark vertical />
+        <q-btn-dropdown stretch flat no-caps :label="selectedLanguageName">
+          <q-list padding dense>
+            <q-item
+              v-for="{ code, name } in languages"
+              :key="code"
+              v-close-popup
+              clickable
+              :active="code === $i18n.locale"
+              @click="$i18n.locale = code"
+            >
+              <q-item-section>
+                <q-item-label>{{ name }}</q-item-label>
+              </q-item-section>
+            </q-item>
+          </q-list>
+        </q-btn-dropdown>
+        <q-separator dark vertical />
+        <NuxtLink
+          v-if="!isAuthenticated"
+          v-slot="{ navigate }"
+          custom
+          to="/login"
+        >
+          <q-btn
+            stretch
+            flat
+            :label="$t('login')"
+            no-caps
+            @click="navigate()"
+          />
         </NuxtLink>
-        <NuxtLink v-slot="{ navigate }" custom to="/logout">
-          <button
-            class="nav-button"
-            @click="(event) => handleClick(event, navigate)"
-          >
-            {{ $t("logout") }}
-          </button>
-        </NuxtLink>
-      </nav>
-    </header>
-    <div class="container mx-auto p-1">
+        <q-btn
+          v-else
+          stretch
+          flat
+          :label="$t('logout')"
+          no-caps
+          @click="signOut()"
+        />
+      </q-toolbar>
+    </q-header>
+    <q-page-container :style="pageContainerStyle">
+      <q-banner v-if="isAuthenticated" class="bg-primary text-white">
+        {{ authUser }}
+      </q-banner>
       <slot></slot>
-    </div>
-  </div>
+    </q-page-container>
+  </q-layout>
 </template>
 
 <script setup lang="ts">
@@ -66,6 +99,21 @@
  *     - <NuxtLayout name='custom'>
  */
 console.log("woors) Layout.default...");
+const { signOut } = useAuth();
+const authUser = useAuthUser();
+const isAuthenticated = useAuthenticated();
+
+const pageContainerStyle = computed(() => ({
+  maxWidth: "1080px",
+  margin: "0 auto",
+}));
+
+const moveYoutube = async () => {
+  await navigateTo("https://youtube.com/@gymcoding", {
+    external: true,
+    open: { target: "_blank" },
+  });
+};
 
 const handleClick = (_: Event, navigate: () => void) => {
   navigate();
@@ -86,7 +134,11 @@ const selectedLanguageName = computed(
   () => languages.value.find((item) => item.code === locale.value)?.name
 );
 
-const counter = useState("counter");
+/**
+ * 전역 상태 관리 = useState
+ * clearNuxtState : 캐시된 상태를 삭제
+ */
+const counter = useState<number>("counter");
 </script>
 
 <style scoped>

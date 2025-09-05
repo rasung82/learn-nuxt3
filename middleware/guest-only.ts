@@ -1,6 +1,6 @@
 export default defineNuxtRouteMiddleware(() => {
-  const { isAuthenticated } = useAuthUser();
-
+  console.log("woors) guest-only");
+  const isAuthenticated = useAuthenticated();
   if (isAuthenticated.value) {
     return abortNavigation();
   }

@@ -6,20 +6,19 @@ export const useAuth = () => {
   const authUser = useAuthUser();
 
   const signIn = (email: string, password: string) => {
-    const user = getUser(email, password);
-
-    if (!user) {
+    const foundUser = getUser(email, password);
+    if (!foundUser) {
       throw createError({
         statusCode: 401,
         statusMessage: "Invalid email or password",
       });
     }
-    authUser.value = user;
+    setUser(foundUser);
   };
 
-  const signOut = () => {
-    authUser.value = null;
-  };
+  const signOut = () => setUser(null);
+
+  const setUser = (user: Maybe<UserWithoutPassword>) => (authUser.value = user);
 
   return {
     signIn,
