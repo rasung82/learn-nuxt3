@@ -1,10 +1,10 @@
 <template>
   <main class="min-h-screen">
     <div class="text-center">
-      <div class="text-4xl">About</div>
-      <p class="mt-2 text-gray-600">
-        Vue & Nuxt Mastery Class 웹은 Nuxt3로 만들어졌습니다.
-      </p>
+      <PageTitle title="About" />
+      <PageDescription
+        description="Vue & Nuxt Mastery Class 웹은 Nuxt3로 만들어졌습니다."
+      />
       <div class="flex flex-col">
         <RouterLink to="/">Home(RouterLink)</RouterLink>
         <RouterLink to="https://youtube.com">Youtube(RouterLink)</RouterLink>

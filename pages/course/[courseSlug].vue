@@ -100,16 +100,16 @@ const courseSlug = route.params.courseSlug as string;
 const { course, prevCourse, nextCourse } = useCourse(courseSlug);
 console.log("woors) Page.courseSlug...%s, %s", route.meta.title, course?.title);
 
-// definePageMeta는 페이지 컴포넌트에 대한 메타데이터를 설정하는데 사용
-// 컴퍼일러 매크로 함수이며 컴포넌트 내에서 참조할 수 없도록 컴파일된다.
-// 하여, 페이지 메타 객체는 컴포넌트를 참조할 수 없다.
-// keepalive : 컴포넌트의 상태를 유지, 캐싱한다.
+/**
+ * definePageMeta는 페이지 컴포넌트에 대한 메타데이터를 설정하는데 사용
+ * 컴퍼일러 매크로 함수이며 컴포넌트 내에서 참조할 수 없도록 컴파일된다. 하여, 페이지 메타 객체는 컴포넌트를 참조할 수 없다.
+ * keepalive : 컴포넌트의 상태를 유지, 캐싱한다.
+ */
 definePageMeta({
   key: (route) => route.fullPath,
   title: "Course Detail Page",
   keepalive: true,
   layout: "custom",
-  // Route Validation !
   // validate: (route) => {
   //   const courseSlug = route.params.courseSlug as string;
   //   const { course } = useCourse(courseSlug);
@@ -123,13 +123,15 @@ definePageMeta({
   //   return true;
   // },
   middleware: (route) => {
+    console.log("woors) Inline Middleware");
     const courseSlug = route.params.courseSlug as string;
     const { course } = useCourse(courseSlug);
     if (!course) {
+      // 네비케이션 중단 후 에러 메세지를 노출한다.
       return abortNavigation(
         createError({
           statusCode: 404,
-          statusMessage: "Page not found",
+          statusMessage: "Course not found",
           fatal: false,
         })
       );

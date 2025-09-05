@@ -5,6 +5,8 @@ import { useAuthUser } from "./useAuthUser";
 export const useAuth = () => {
   const authUser = useAuthUser();
 
+  const setUser = (user: Maybe<UserWithoutPassword>) => (authUser.value = user);
+
   const signIn = (email: string, password: string) => {
     const foundUser = getUser(email, password);
     if (!foundUser) {
@@ -17,8 +19,6 @@ export const useAuth = () => {
   };
 
   const signOut = () => setUser(null);
-
-  const setUser = (user: Maybe<UserWithoutPassword>) => (authUser.value = user);
 
   return {
     signIn,

@@ -8,7 +8,7 @@
 </template>
 <script setup lang="ts">
 /**
- * useNuxtApp는 공유  런타임컨텍스트(nuxtApp)에 접근할 수 있는 내장 컴포저블함수이다.
+ * useNuxtApp는 공유 런타임컨텍스트(nuxtApp)에 접근할 수 있는 내장 컴포저블함수이다.
  * 런타임컨텍스트(nuxtApp)는 코드가 실행되는 동안 앱의 상태와 설정을 말한다.
  *   - provide
  *   - hook

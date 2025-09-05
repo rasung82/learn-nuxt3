@@ -67,14 +67,15 @@
             @click="navigate()"
           />
         </NuxtLink>
-        <q-btn
-          v-else
-          stretch
-          flat
-          :label="$t('logout')"
-          no-caps
-          @click="signOut()"
-        />
+        <NuxtLink v-else v-slot="{ navigate }" custom to="/login">
+          <q-btn
+            stretch
+            flat
+            :label="$t('logout')"
+            no-caps
+            @click="signOut()"
+          />
+        </NuxtLink>
       </q-toolbar>
     </q-header>
     <q-page-container :style="pageContainerStyle">
@@ -89,7 +90,7 @@
 <script setup lang="ts">
 // import { useI18n } from "vue-i18n";
 /**
- * 레이아웃 이름은 Kebab-case로 정규화된다.
+ * 레이아웃 이름은 케밥 케이스로 정규화된다.
  * 레이아웃을 지정하지 않으면 layouts/default.vue가 사용된다.
  * 애플리케이션이 단일 레이아웃만 있는 경우 대신 app.vue를 사용하는 것이 좋다
  * 특정 레이아웃을 사용하려면

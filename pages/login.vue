@@ -1,11 +1,11 @@
 <template>
-  <div>
-    <div class="flex flex-col items-center mt-12">
-      <div class="text-6xl mt-12 mb-6">Login</div>
-      <p class="text-base">Hello :)</p>
+  <q-page padding>
+    <div class="flex flex-center column q-pt-xl">
+      <PageAuthTitle title="Login" />
+      <PageAuthDescription description="Hello :)" />
       <FormLogin style="width: 400px" @success="handleLoginSucess" />
     </div>
-  </div>
+  </q-page>
 </template>
 
 <script setup lang="ts">
@@ -18,6 +18,7 @@ const isAdmin = useAdmin();
 const handleLoginSucess = async () => {
   console.log("woors) handleLoginSucess...");
   const redirect = isAdmin.value ? "/admin" : "/";
+  // navigateTo 힘수는 비동기 함수이다. (async-await)
   await navigateTo(redirect);
 };
 </script>

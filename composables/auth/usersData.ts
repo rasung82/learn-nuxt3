@@ -15,6 +15,9 @@ const users: User[] = [
   },
 ];
 
+/**
+ * 이메일과 패스워드를 가지고 사용자를 검색
+ */
 export const getUser = (
   email: string,
   password: string

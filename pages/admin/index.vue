@@ -1,8 +1,8 @@
 <template>
   <p-page padding>
     <div class="q-my-xl tetxt-center">
-      <div class="text-h4">Admin Page</div>
-      <p class="q-mt-sm text-gray-8">Admin Layout 페이지</p>
+      <PageTitle title="Admin Page" />
+      <pageDescription description="Admin Layout 페이지" />
     </div>
   </p-page>
 </template>
