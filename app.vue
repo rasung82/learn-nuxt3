@@ -15,8 +15,7 @@
  */
 const nuxtApp = useNuxtApp();
 // nuxtApp.provide("hello", (message: string) => `Hello ${message}`);
-
-console.log("woors) App...", nuxtApp.vueApp);
+// console.log("woors) App...", nuxtApp.vueApp);
 
 /**
  * RouterView VS NuxtPage
@@ -25,5 +24,18 @@ console.log("woors) App...", nuxtApp.vueApp);
  *   - pageKey 속성에 정적인 키를 전달하면 한번만 렌더링된다.
  *   - 단, NuxtPage는 query가 추가 변경될때는 렌더링은 되지 않는다.
  *   - pageKey는 /pages 디렉토리에 있는 컴포넌트에서 definePageMeta함수를 통해 key 값 가능
+ */
+
+/**
+ * Nuxt3 강의 목차
+ * 4) Error Handling
+ * 5) Route Middleware
+ *  - Global Middleware
+ *  - Named Middleware
+ *  - Inline Middleware
+ * 6) State Management
+ *   - useState
+ *   - Pinia
+ * 7) Server Routing
  */
 </script>

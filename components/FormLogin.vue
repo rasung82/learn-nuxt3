@@ -2,7 +2,7 @@
   <q-form class="q-gutter-lg" @submit.prevent="handleLoginSubmit">
     <q-input v-model="form.email" filled label="email" />
 
-    <q-input v-model="form.passwowrd" filled type="password" label="password" />
+    <q-input v-model="form.password" filled type="password" label="password" />
 
     <div v-if="error" class="text-red text-center">{{ error.message }}</div>
 
@@ -21,13 +21,15 @@
 </template>
 
 <script setup lang="ts">
-const { signIn } = useAuth();
+// const { signIn } = useAuth();
+const { signIn } = useAuthStore();
+
+// const emit = defineEmits(['success']);
 const emit = defineEmits<{
   success: [];
 }>();
-// const emit = defineEmits(['success']);
 
-const form = ref({ email: "", passwowrd: "" });
+const form = ref({ email: "", password: "" });
 const error = ref<Error | null>(null);
 const loading = ref(false);
 
@@ -37,7 +39,7 @@ const handleLoginSubmit = () => {
     error.value = null;
     loading.value = true;
 
-    signIn(form.value.email, form.value.passwowrd);
+    signIn(form.value.email, form.value.password);
     emit("success");
   } catch (err: unknown) {
     if (err instanceof Error) {

@@ -100,9 +100,12 @@
  *     - <NuxtLayout name='custom'>
  */
 console.log("woors) Layout.default...");
-const { signOut } = useAuth();
-const authUser = useAuthUser();
-const isAuthenticated = useAuthenticated();
+// const authUser = useAuthUser();
+// const isAuthenticated = useAuthenticated();
+// const { signOut } = useAuth();
+
+const { authUser, isAuthenticated } = storeToRefs(useAuthStore());
+const { signOut } = useAuthStore();
 
 const pageContainerStyle = computed(() => ({
   maxWidth: "1080px",
@@ -131,15 +134,22 @@ const languages = ref<Languages[]>([
 ]);
 
 const { locale } = useI18n();
+
 const selectedLanguageName = computed(
   () => languages.value.find((item) => item.code === locale.value)?.name
 );
 
 /**
- * 전역 상태 관리 = useState
- * clearNuxtState : 캐시된 상태를 삭제
+ * useCookie는 SSR을 지원하는 쿠키를 읽고 쓰기 위한 컴포저블이다.
+ *  - const cookie = useCookie('cookie-name', options)
+ *  - useCookie는 자동으로 쿠키 값을 JSON으로 직렬화/역직렬화한다.
+ *
+ * 언어 변경 시 쿠키에 저장하는 예제
  */
-const counter = useState<number>("counter");
+watch(locale, (newLocale) => {
+  console.log("woors) newLocale...", newLocale);
+  useCookie("locale").value = newLocale;
+});
 </script>
 
 <style scoped>

@@ -4,7 +4,7 @@ export default defineNuxtPlugin((nuxtApp) => {
   const i18n = createI18n({
     legacy: false,
     globalInjection: true,
-    locale: useDefaultLocale()?.value,
+    locale: useCookie("locale")?.value || useDefaultLocale()?.value,
     messages: {
       en: {
         home: "Home",

@@ -13,12 +13,13 @@ definePageMeta({
   middleware: "guest-only",
 });
 
-const isAdmin = useAdmin();
+// const isAdmin = useAdmin();
+const { isAdmin } = storeToRefs(useAuthStore());
 
 const handleLoginSucess = async () => {
   console.log("woors) handleLoginSucess...");
   const redirect = isAdmin.value ? "/admin" : "/";
-  // navigateTo 힘수는 비동기 함수이다. (async-await)
+  // navigateTo 함수는 비동기 함수이기에 async-await 구문을 사용해야한다.
   await navigateTo(redirect);
 };
 </script>
