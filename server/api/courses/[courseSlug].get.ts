@@ -1,4 +1,3 @@
-import { get } from "http";
 import { getCourseDetail } from "~/server/models/courses";
 
 export default defineEventHandler((event) => {
