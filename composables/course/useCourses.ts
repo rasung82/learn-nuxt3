@@ -1,20 +1,19 @@
-import coursesData from './courseData';
-import type { CourseWithPath } from '~/types/course';
+import type { CourseWithPath } from "~/types/course";
 
 interface CoursesReturn {
   courses: CourseWithPath[];
 }
 
-export const useCourses = (): CoursesReturn => {
-  const courses = coursesData.map((course) => ({
-    ...course,
-    rating: course.rating.toFixed(1),
-    reviewsCount: course.reviewsCount.toLocaleString(),
-    studentCount: course.studentCount.toLocaleString(),
-    path: `/course/${course.courseSlug}`,
-  }));
+export const useCourses = async (): Promise<CoursesReturn> => {
+  const { data, error } = await useFetch("/api/courses");
+
+  if (error.value) {
+    throw createError({
+      ...error.value,
+    });
+  }
 
   return {
-    courses,
+    courses: data.value as CourseWithPath[],
   };
 };

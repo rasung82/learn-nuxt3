@@ -97,7 +97,7 @@
 <script setup lang="ts">
 const route = useRoute();
 const courseSlug = route.params.courseSlug as string;
-const { course, prevCourse, nextCourse } = useCourse(courseSlug);
+const { course, prevCourse, nextCourse } = await useCourse(courseSlug);
 console.log("woors) Page.courseSlug...%s, %s", route.meta.title, course?.title);
 
 /**
@@ -122,10 +122,10 @@ definePageMeta({
   //   }
   //   return true;
   // },
-  middleware: (route) => {
+  middleware: async (route) => {
     console.log("woors) Inline Middleware");
     const courseSlug = route.params.courseSlug as string;
-    const { course } = useCourse(courseSlug);
+    const { course } = await useCourse(courseSlug);
     if (!course) {
       // 네비케이션 중단 후 에러 메세지를 노출한다.
       return abortNavigation(

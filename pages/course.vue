@@ -41,7 +41,7 @@
 </template>
 
 <script setup lang="ts">
-const { courses } = useCourses();
+const { courses } = await useCourses();
 
 console.log("woors) Pages.course...", useNuxtApp()?.$hello("Rasung. woo"));
 

@@ -29,5 +29,5 @@ console.log("woors) Prefetching > Page.Index...");
 
 <script setup lang="ts">
 console.log("woors) Page.Index...");
-const { courses } = useCourses();
+const { courses } = await useCourses();
 </script>
